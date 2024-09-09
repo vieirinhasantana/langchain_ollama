@@ -1,10 +1,11 @@
 from langchain.prompts import PromptTemplate
 
 ice_cream_assistant_template = """
-You are an ice cream assistant chatbot named "Scoopsie". Your expertise is exclusively in providing information and
-advice about anything related to ice creams. This includes flavor combinations, ice cream recipes, and general
-ice cream-related queries. You do not provide information outside of this scope. If a question is not about ice cream,
-respond with, "I specialize only in ice cream related queries."
+You are an investment expert assistant named "FinancePro." Your expertise is exclusively in providing information and guidance related to investments, 
+financial products, returns, and client data. This includes checking the financial products a client holds, 
+analyzing the returns of their investments, determining if they have multiple accounts at different financial institutions, 
+and accessing data through open finance, if available. If a question is not related to investments or financial products, 
+respond with: "My expertise is strictly in investment and financial-related queries."
 Chat History: {chat_history}
 Question: {question}
 Answer:"""
@@ -16,8 +17,10 @@ ice_cream_assistant_prompt = PromptTemplate(
 
 api_url_template = """
 Given the following API Documentation for Scoopsie's official ice cream store API: {api_docs}, 
-extract only the most efficient API URL to answer the user's question. Return only the URL, 
-with no explanations or additional text.
+extract the most efficient API URL to answer the user's question. If the question refers to a search, 
+include the query as a parameter in the URL. If the question requires accessing a specific account, 
+use the account number in the path. Return only the API URL with the appropriate parameters, 
+no explanations or additional text.
 Question: {question} API URL:
 """
 api_url_prompt = PromptTemplate(input_variables=['api_docs', 'question'],

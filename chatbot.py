@@ -37,7 +37,7 @@ async def handle_message(message: cl.Message):
     llm_chain = cl.user_session.get("llm_chain")
     api_chain = cl.user_session.get("api_chain")
 
-    if any(keyword in user_message for keyword in ["menu", "customization", "offer", "review"]):
+    if any(keyword in user_message for keyword in ["search", "client", "document", "account number", "detail"]):
         # If any of the keywords are in the user_message, use api_chain
         response = await api_chain.acall(user_message,
                                          callbacks=[cl.AsyncLangchainCallbackHandler()])
